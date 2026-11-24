@@ -36,8 +36,12 @@ section { padding: var(--s6) 0; }
 .band { background: var(--alt); }
 
 /* Logo */
-.home { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; color: #fff; font: 700 21px/1 var(--cond); text-transform: uppercase; letter-spacing: .05em; }
+.home { text-shadow: 0 1px 10px rgba(5,10,20,.6); display: inline-flex; align-items: center; gap: 12px; text-decoration: none; color: #fff; font: 700 21px/1 var(--cond); text-transform: uppercase; letter-spacing: .05em; }
 .home span span { color: var(--t2); }
+/* soft dark shade behind the logo so it reads on any photo; no box */
+.nav .home { position: relative; isolation: isolate; }
+.nav .home span span { color: rgba(255,255,255,.75); }
+.nav .home::before { content: ""; position: absolute; inset: -44px -70px; z-index: -1; background: radial-gradient(closest-side, rgba(8,12,22,.88) 35%, rgba(8,12,22,.5) 65%, rgba(8,12,22,0)); pointer-events: none; }
 .logo { width: 34px; height: 34px; flex: none; }
 
 /* Buttons: dark glass, blue light rising from the bottom; secondary is the same glass without the light */
@@ -67,18 +71,15 @@ section { padding: var(--s6) 0; }
 /* Hero */
 .hero { position: relative; padding: 0; min-height: 100vh; min-height: 100svh; overflow: hidden; background: #0f2d5c; }
 .hero > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 28%; }
-/* desktop: photo on the left so the text never sits on the waterfall or his face */
-@media (min-width: 901px) {
-  .hero { background: var(--bg); }
-  .hero > img { width: 60%; object-position: 50% 35%; }
-}
+.hero > img { object-position: 50% 35%; }
+/* darker right side for the text, fade into the page at the bottom */
 .hero::after { content: ""; position: absolute; inset: 0; background:
-  linear-gradient(180deg, rgba(10,15,26,.55) 0%, rgba(10,15,26,0) 22%),
-  linear-gradient(90deg, rgba(10,15,26,0) 42%, var(--bg) 60%),
-  linear-gradient(0deg, var(--bg) 0%, rgba(10,15,26,0) 22%); }
+  linear-gradient(180deg, rgba(10,15,26,.5) 0%, rgba(10,15,26,0) 20%),
+  linear-gradient(90deg, rgba(10,15,26,0) 55%, rgba(10,15,26,.82) 74%, rgba(10,15,26,.9) 100%),
+  linear-gradient(0deg, var(--bg) 0%, rgba(10,15,26,0) 18%); }
 .hero .wrap { position: relative; z-index: 2; min-height: 100vh; min-height: 100svh; display: flex; align-items: flex-start; }
-.hero-text { margin-left: auto; width: 540px; align-self: center; padding-top: 40px; }
-.hero h1 { font-size: clamp(64px, 7.4vw, 112px); line-height: .88; text-shadow: 0 2px 30px rgba(5,15,40,.35); }
+.hero-text { margin-left: auto; width: 400px; align-self: center; padding-top: 40px; }
+.hero h1 { font-size: clamp(56px, 5.6vw, 88px); line-height: .88; text-shadow: 0 2px 30px rgba(5,15,40,.35); }
 .hero h1 span { display: block; color: rgba(255,255,255,.72); }
 .hero p { text-shadow: 0 1px 14px rgba(5,12,30,.6); font-size: 21px; line-height: 1.45; margin: var(--s3) 0 var(--s4); max-width: 460px; color: rgba(255,255,255,.94); }
 
@@ -94,7 +95,7 @@ section { padding: var(--s6) 0; }
 .sticky { position: sticky; top: 48px; }
 .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .feat { background: var(--r1); padding: 36px 32px 40px; border-radius: var(--rad-l); }
-.ico { width: 40px; height: 40px; color: var(--brand); margin-bottom: 28px; }
+.ico { width: 36px; height: 36px; color: #5B97FF; margin-bottom: 24px; filter: drop-shadow(0 4px 14px rgba(52,120,246,.55)); }
 .feat p, .step p { color: var(--t2); margin-top: 10px; }
 
 /* How it works */
@@ -102,7 +103,7 @@ section { padding: var(--s6) 0; }
 .how > img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 30%; border-radius: var(--rad-l); }
 .steps { list-style: none; display: grid; gap: var(--s4); margin-top: var(--s5); }
 .step { display: grid; grid-template-columns: 48px 1fr; gap: 20px; }
-.step .ico { width: 32px; height: 32px; margin: 2px 0 0; }
+.step .ico { width: 36px; height: 36px; margin: 0; }
 
 /* Progression chart (illustrative example) */
 .pg { display: grid; grid-template-columns: 4fr 7fr; gap: var(--s5); align-items: center; }
@@ -207,7 +208,7 @@ details p { padding: 0 28px 24px; color: var(--t2); max-width: 640px; }
   .hero > img { object-position: 40% 30%; }
   .hero::after { background: linear-gradient(180deg, rgba(10,15,26,.6) 0%, rgba(10,15,26,0) 16%), linear-gradient(0deg, var(--bg) 0%, rgba(10,15,26,.85) 30%, rgba(10,15,26,0) 58%); }
   .hero .wrap { align-items: flex-end; }
-  .hero-text { margin: 0; width: 100%; padding: 0 0 40px; }
+  .hero-text { margin: 0; width: 100%; padding: 0 0 40px; align-self: flex-end; }
   .hero h1 { font-size: 52px; line-height: .92; }
   .hero p { font-size: 17px; margin: 14px 0 24px; }
   .proof-head, .split, .how, .who { grid-template-columns: 1fr; gap: var(--s4); }
@@ -219,12 +220,13 @@ details p { padding: 0 28px 24px; color: var(--t2); max-width: 640px; }
   .tile figcaption { font-size: 16px; margin-top: 10px; }
   /* what you get: a list on the band, not boxes */
   .grid2 { grid-template-columns: 1fr; gap: 0; }
-  .feat { background: none; border-radius: 0; padding: 14px 0; display: grid; grid-template-columns: 40px 1fr; column-gap: 20px; }
-  .feat .ico { margin: 0; grid-row: span 2; width: 32px; height: 32px; }
+  .feat { background: none; border-radius: 0; padding: 14px 0; display: grid; grid-template-columns: 44px 1fr; column-gap: 16px; }
+  .feat .ico { margin: 0; grid-row: span 2; width: 30px; height: 30px; }
   .feat p { margin-top: 6px; font-size: 15px; }
   .how > img { aspect-ratio: 4 / 3; border-radius: var(--rad); }
   .steps { margin-top: var(--s4); gap: var(--s3); }
-  .step { grid-template-columns: 32px 1fr; }
+  .step { grid-template-columns: 40px 1fr; gap: 16px; }
+  .step .ico { width: 30px; height: 30px; }
   .pg { grid-template-columns: 1fr; gap: var(--s4); }
   .chart { padding: 20px 16px 12px; }
   .chart-head { flex-direction: column; gap: 4px; }
