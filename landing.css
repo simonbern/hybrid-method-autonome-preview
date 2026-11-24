@@ -66,13 +66,18 @@ section { padding: var(--s6) 0; }
 
 /* Hero */
 .hero { position: relative; padding: 0; min-height: 100vh; min-height: 100svh; overflow: hidden; background: #0f2d5c; }
-.hero > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 52%; }
+.hero > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 28%; }
+/* desktop: photo on the left so the text never sits on the waterfall or his face */
+@media (min-width: 901px) {
+  .hero { background: var(--bg); }
+  .hero > img { width: 60%; object-position: 50% 35%; }
+}
 .hero::after { content: ""; position: absolute; inset: 0; background:
-  linear-gradient(180deg, rgba(10,15,26,.55) 0%, rgba(10,15,26,0) 28%),
-  radial-gradient(ellipse 50% 62% at 74% 36%, rgba(8,16,36,.72), rgba(8,16,36,0) 72%),
+  linear-gradient(180deg, rgba(10,15,26,.55) 0%, rgba(10,15,26,0) 22%),
+  linear-gradient(90deg, rgba(10,15,26,0) 42%, var(--bg) 60%),
   linear-gradient(0deg, var(--bg) 0%, rgba(10,15,26,0) 22%); }
 .hero .wrap { position: relative; z-index: 2; min-height: 100vh; min-height: 100svh; display: flex; align-items: flex-start; }
-.hero-text { margin-left: auto; width: 540px; padding-top: 150px; }
+.hero-text { margin-left: auto; width: 540px; align-self: center; padding-top: 40px; }
 .hero h1 { font-size: clamp(64px, 7.4vw, 112px); line-height: .88; text-shadow: 0 2px 30px rgba(5,15,40,.35); }
 .hero h1 span { display: block; color: rgba(255,255,255,.72); }
 .hero p { text-shadow: 0 1px 14px rgba(5,12,30,.6); font-size: 21px; line-height: 1.45; margin: var(--s3) 0 var(--s4); max-width: 460px; color: rgba(255,255,255,.94); }
@@ -198,9 +203,11 @@ details p { padding: 0 28px 24px; color: var(--t2); max-width: 640px; }
   .lead { font-size: 17px; margin-top: 16px; }
   /* hero: one full-bleed photo, dark fade behind the text */
   .hero { background: var(--bg); }
-  .hero > img { object-position: 38% 70%; }
-  .hero::after { background: linear-gradient(180deg, rgba(10,15,26,.85) 0%, rgba(10,15,26,.45) 34%, rgba(10,15,26,0) 55%), linear-gradient(0deg, var(--bg) 0%, rgba(10,15,26,0) 16%); }
-  .hero-text { margin: 0; width: 100%; padding-top: 112px; }
+  /* face sits in the upper half of the photo, so the text goes to the bottom */
+  .hero > img { object-position: 40% 30%; }
+  .hero::after { background: linear-gradient(180deg, rgba(10,15,26,.6) 0%, rgba(10,15,26,0) 16%), linear-gradient(0deg, var(--bg) 0%, rgba(10,15,26,.85) 30%, rgba(10,15,26,0) 58%); }
+  .hero .wrap { align-items: flex-end; }
+  .hero-text { margin: 0; width: 100%; padding: 0 0 40px; }
   .hero h1 { font-size: 52px; line-height: .92; }
   .hero p { font-size: 17px; margin: 14px 0 24px; }
   .proof-head, .split, .how, .who { grid-template-columns: 1fr; gap: var(--s4); }
