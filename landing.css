@@ -128,9 +128,14 @@ html { scroll-padding-top: 88px; }
 /* How it works */
 .how { display: grid; grid-template-columns: 5fr 6fr; gap: var(--s5); align-items: center; }
 .how > img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 30%; border-radius: var(--rad-l); }
-.steps { list-style: none; display: grid; gap: var(--s4); margin-top: var(--s5); }
-.step { display: grid; grid-template-columns: 48px 1fr; gap: 20px; }
-.step .ico { width: 36px; height: 36px; margin: 0; }
+.steps { --gap: var(--s4); list-style: none; display: grid; gap: var(--gap); margin-top: var(--s5); }
+/* timeline: a soft rail behind the steps, one blue node per step */
+.step:not(:last-child)::before { content: ""; position: absolute; left: 8px; top: 13px; height: calc(100% + var(--gap)); width: 4px; border-radius: 2px; background: rgba(52,120,246,.45); }
+.step { position: relative; padding-left: 48px; }
+.step .node { position: absolute; left: 0; top: 3px; width: 20px; height: 20px; border-radius: 50%; background: var(--brand); box-shadow: 0 0 0 5px var(--alt); }
+/* program icons, left of the name */
+.pname { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.pico { width: 26px; height: 26px; flex: none; color: #5B97FF; }
 
 /* Progression chart (illustrative example) */
 .pg { display: grid; grid-template-columns: 4fr 7fr; gap: var(--s5); align-items: center; }
@@ -257,9 +262,10 @@ details p { padding: 0 28px 24px; color: var(--t2); max-width: 640px; }
   .feat .ico { margin: 0; grid-row: span 2; width: 30px; height: 30px; }
   .feat p { margin-top: 6px; font-size: 15px; }
   .how > img { aspect-ratio: 4 / 3; border-radius: var(--rad); }
-  .steps { margin-top: var(--s4); gap: var(--s3); }
-  .step { grid-template-columns: 40px 1fr; gap: 16px; }
-  .step .ico { width: 30px; height: 30px; }
+  .steps { margin-top: var(--s4); --gap: var(--s3); }
+  .step { padding-left: 40px; }
+  .pico { width: 22px; height: 22px; }
+  .pname { flex-direction: column; align-items: flex-start; gap: 8px; }
   .pg { grid-template-columns: 1fr; gap: var(--s4); }
   .chart { padding: 20px 16px 12px; }
   .chart-head { flex-direction: column; gap: 4px; }
