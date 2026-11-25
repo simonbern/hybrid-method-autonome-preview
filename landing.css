@@ -39,7 +39,7 @@ section { padding: var(--s6) 0; }
 .home { text-shadow: 0 1px 10px rgba(5,10,20,.6); display: inline-flex; align-items: center; gap: 12px; text-decoration: none; color: #fff; font: 700 21px/1 var(--cond); text-transform: uppercase; letter-spacing: .05em; }
 .wm { display: flex; flex-direction: column; gap: 5px; }
 .wm-m { color: #5B97FF; }
-.wm-sub { font-weight: 500; font-size: .58em; letter-spacing: .32em; color: rgba(255,255,255,.7); }
+.wm-sub { align-self: flex-start; font-weight: 600; font-size: .7em; line-height: 1; white-space: nowrap; color: rgba(255,255,255,.7); }
 /* soft dark shade behind the logo so it reads on any photo; no box */
 .nav .home { position: relative; isolation: isolate; }
 .nav .home::before { content: ""; position: absolute; inset: -44px -70px; z-index: -1; background: radial-gradient(closest-side, rgba(8,12,22,.88) 35%, rgba(8,12,22,.5) 65%, rgba(8,12,22,0)); pointer-events: none; }
@@ -108,7 +108,7 @@ html { scroll-padding-top: 88px; }
 .hero .wrap { position: relative; z-index: 2; min-height: 100vh; min-height: 100svh; display: flex; align-items: flex-start; }
 .hero-text { margin-left: auto; width: 400px; align-self: center; padding-top: 40px; }
 .hero h1 { font-size: clamp(56px, 5.6vw, 88px); line-height: .88; text-shadow: 0 2px 30px rgba(5,15,40,.35); }
-.hero h1 .h1-sub { display: block; margin-top: 18px; font-size: .36em; font-weight: 500; line-height: 1; letter-spacing: .34em; color: rgba(255,255,255,.78); }
+.hero h1 .h1-sub { display: block; margin-top: 18px; font-size: .44em; font-weight: 500; line-height: 1; letter-spacing: .3em; color: rgba(255,255,255,.78); }
 .hero p { text-shadow: 0 1px 14px rgba(5,12,30,.6); font-size: 21px; line-height: 1.45; margin: var(--s3) 0 var(--s4); max-width: 460px; color: rgba(255,255,255,.94); }
 
 /* Proof */

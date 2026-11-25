@@ -101,3 +101,20 @@ for (const path of document.querySelectorAll(".chart .draw")) {
   for (const a of nav.querySelectorAll(".menu a, .nav-cta")) a.addEventListener("click", () => setOpen(false));
   addEventListener("keydown", (e) => { if (e.key === "Escape") setOpen(false); });
 })();
+
+// Logo: spread the sub-brand letters so the line under "Hybrid Method" is exactly as wide.
+(() => {
+  function fit() {
+    for (const w of document.querySelectorAll(".wm")) {
+      const m = w.querySelector(".wm-main"), s = w.querySelector(".wm-sub");
+      s.style.letterSpacing = "0"; s.style.marginRight = "0";
+      const n = s.textContent.length;
+      const ls = (m.getBoundingClientRect().width - s.getBoundingClientRect().width) / (n - 1);
+      s.style.letterSpacing = ls + "px"; s.style.marginRight = -ls + "px"; // trailing space after the last letter
+    }
+  }
+  document.getElementById("lang-toggle").addEventListener("click", fit);
+  addEventListener("resize", fit);
+  document.fonts.ready.then(fit);
+  fit();
+})();
