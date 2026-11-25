@@ -88,3 +88,16 @@ for (const path of document.querySelectorAll(".chart .draw")) {
   const fromUrl = location.hash.match(/program=([\w-]+)/);
   if (fromUrl) pick(fromUrl[1]);
 })();
+
+// Header: dark glass once the page scrolls; burger opens the menu below 1100px, any link closes it.
+(() => {
+  const nav = document.getElementById("nav");
+  const burger = document.getElementById("burger");
+  const onScroll = () => nav.classList.toggle("solid", scrollY > 40);
+  addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+  const setOpen = (open) => { nav.classList.toggle("open", open); burger.setAttribute("aria-expanded", String(open)); };
+  burger.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+  for (const a of nav.querySelectorAll(".menu a, .nav-cta")) a.addEventListener("click", () => setOpen(false));
+  addEventListener("keydown", (e) => { if (e.key === "Escape") setOpen(false); });
+})();

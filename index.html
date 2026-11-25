@@ -16,14 +16,24 @@
   <symbol id="hm" viewBox="76 76 1102 1102"><circle cx="627" cy="627" r="519" fill="none" stroke="#3478F6" stroke-width="32"/><path fill="#3478F6" d="M427 264h116v142h174V264h114v354H717V491H543v127H427z"/><path fill="#FFFFFF" d="M426 650h122l79 179 80-179h123v338h-99V808l-79 180h-49l-77-180v180H426z"/></symbol>
 </svg>
 
-<header class="nav"><div class="wrap">
+<header class="nav" id="nav">
   <a class="home" href="#top"><svg class="logo" aria-hidden="true"><use href="#hm"/></svg><span>Hybrid Method <span data-i18n="suffix">Autonome</span></span></a>
-  <button class="lang" id="lang-toggle" type="button" aria-label="Passer en anglais" data-i18n-aria-label="toggle_label">EN</button>
-</div></header>
+  <nav class="menu" id="menu" aria-label="Menu">
+    <a href="#how" data-i18n="nav_how">Comment ça marche</a>
+    <a href="#programs" data-i18n="nav_programs">Programmes</a>
+    <a href="#plans" data-i18n="nav_plans">Formules</a>
+    <a href="#faq" data-i18n="nav_faq">FAQ</a>
+  </nav>
+  <div class="nav-end">
+    <button class="lang" id="lang-toggle" type="button" aria-label="Passer en anglais" data-i18n-aria-label="toggle_label">EN</button>
+    <a class="btn nav-cta" href="#plans" data-i18n="nav_cta">Commencer</a>
+    <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Ouvrir le menu" data-i18n-aria-label="menu_label"><span></span></button>
+  </div>
+</header>
 
 <main>
 <section class="hero" id="top">
-  <picture><source media="(min-width: 901px)" srcset="img/hero-wide.jpg"><img src="img/hero.jpg" alt="Randonneur devant une chute dans un canyon" data-i18n-alt="alt_hero" fetchpriority="high"></picture>
+  <picture><source media="(min-width: 901px)" type="image/webp" srcset="img/hero-wide-1920.webp 1920w, img/hero-wide-3024.webp 3024w" sizes="100vw"><source type="image/webp" srcset="img/hero-tall-860.webp 860w, img/hero-tall-1290.webp 1290w" sizes="100vw"><img src="img/hero.jpg" alt="Randonneur devant une chute dans un canyon" data-i18n-alt="alt_hero" fetchpriority="high"></picture>
   <div class="wrap"><div class="hero-text">
     <h1>Hybrid Method <span data-i18n="suffix">Autonome</span></h1>
     <p data-i18n="hero_line">Ton plan d’entraînement, construit chaque semaine à partir de tes vraies données.</p>
@@ -295,6 +305,12 @@
 <script type="application/json" id="i18n">
 {
   "fr": {
+    "nav_how": "Comment ça marche",
+    "nav_programs": "Programmes",
+    "nav_plans": "Formules",
+    "nav_faq": "FAQ",
+    "nav_cta": "Commencer",
+    "menu_label": "Ouvrir le menu",
     "suffix": "Autonome",
     "hero_line": "Ton plan d’entraînement, construit chaque semaine à partir de tes vraies données.",
     "cta": "Choisir mon plan",
@@ -422,6 +438,12 @@
     "wk12": "S12"
   },
   "en": {
+    "nav_how": "How it works",
+    "nav_programs": "Programs",
+    "nav_plans": "Plans",
+    "nav_faq": "FAQ",
+    "nav_cta": "Get started",
+    "menu_label": "Open the menu",
     "suffix": "Autonomous",
     "hero_line": "Your training plan, built every week from your real data.",
     "cta": "Choose my plan",
